@@ -84,6 +84,17 @@ def rawMoment(data,n):
     
     return nthMoment.T
 
+# Function for (x+y)th Order Moment
+def highOrdMoment(data,x,y):
+    complexData = data[:,0,:]+(1j*data[:,1,:]) # Data In Complex Form
+    complexDataConj = np.conj(complexData) # Complex Conjugate
+    
+    finDat = np.power(complexData,x-y)*np.power(complexDataConj,y)
+    
+    finDatMean = np.array([np.mean(finDat,axis=1)]).T
+    
+    return finDatMean
+
 # Feature 1: Ratio of Real and Complex Power
 def betaRatio(data):
     sumOfSquares = np.sum(np.square(data),axis=2)
@@ -232,11 +243,139 @@ def maxPSD(data):
     
     return maxPow / maxPow.shape[0]
 
+# Feature 11: Cumulant C20
+def getC20(data):
+    m20 = highOrdMoment(data,2,0)
+    return np.abs(m20)
+
 # Feature 12: Cumulant C21
 def getC21(data):
-    instAmplitude = instAmp(data)
-    cumulantC21 = rawMoment(instAmplitude,2)
-    return cumulantC21
+    m21 = highOrdMoment(data,2,1)
+    return np.abs(m21)
+
+# Feature 13: Cumulant C40
+def getC40(data):
+    m40 = highOrdMoment(data,4,0)
+    m20 = highOrdMoment(data,2,0)
+    c40 = m40 - (3*np.square(m20))
+    
+    return np.abs(c40)
+    
+# Feature 14: Cumulant C41
+def getC41(data):
+    m41 = highOrdMoment(data,4,1)
+    m21 = highOrdMoment(data,2,1)
+    m20 = highOrdMoment(data,2,0)
+    
+    c41 = m41 - (3*m20*m21)
+    
+    return np.abs(c41)
+    
+# Feature 15: Cumulant C42
+def getC42(data):
+    m42 = highOrdMoment(data,4,2)
+    m21 = highOrdMoment(data,4,2)
+    m20 = highOrdMoment(data,2,0)
+    
+    c42 = m42 - np.square(m20) - (2*np.square(m21))
+    
+    return np.abs(c42)
+
+# Feature 16: Cumulant C63
+def getC63(data):
+    m63 = highOrdMoment(data,6,3)
+    m20 = highOrdMoment(data,2,0)
+    m21 = highOrdMoment(data,2,1)
+    m22 = highOrdMoment(data,2,2)
+    m40 = highOrdMoment(data,4,0)
+    m41 = highOrdMoment(data,4,1)
+    m42 = highOrdMoment(data,4,2)
+    
+    t1 = m63 - (9*m21*m42) + (12*np.power(m21,3))
+    #t2 = (-3*m20*m42)-(3*m22*m41)
+    #t3 = 18*m20*m21*m22
+    
+    t2 = (-6*m20*m40) + (18*np.square(m20)*m21) 
+    
+    #c63 = t1+t2+t3
+    c63 = t1+t2
+    
+    return np.abs(c63)
+
+# Feature 17: Cumulant C80
+def getC80(data):
+    m80 = highOrdMoment(data,8,0)
+    m60 = highOrdMoment(data,6,0)
+    m40 = highOrdMoment(data,4,0)
+    m20 = highOrdMoment(data,2,0)
+    
+    t1 = m80 - (35*np.square(m40))
+    t2 = (-28*m60*m20) + (420*m40)
+    t3 = (-630*np.power(m20,4))
+    
+    c80 = t1+t2+t3
+    
+    return np.abs(c80)
+
+# Feature 18: Kurtosis
+def getKurtosis(data):
+    complexData = data[:,0,:]+(1j*data[:,1,:]) # Data In Complex Form
+    meanComplexData = np.array([np.mean(complexData,axis=1)]).T
+    
+    # Find fourth central moment
+    fourthPower = np.power(complexData - meanComplexData,4)
+    centralMoment4 = (np.array([np.sum(fourthPower,axis=1)]).T)/fourthPower.shape[1]
+    
+    # Variance
+    var = np.array([np.var(complexData,axis=1)]).T
+    
+    kurt = np.abs(centralMoment4)/(np.square(var)) # var already abs
+    
+    return kurt
+
+# Feature 19: Skewness
+def getSkewness(data):
+    complexData = data[:,0,:]+(1j*data[:,1,:]) # Data In Complex Form
+    meanComplexData = np.array([np.mean(complexData,axis=1)]).T
+    
+    # Find third central moment
+    thirdPower = np.power(complexData - meanComplexData,3)
+    centralMoment3 = (np.array([np.sum(thirdPower,axis=1)]).T)/thirdPower.shape[1]
+    
+    # Standard Deviation
+    std = np.array([np.std(complexData,axis=1)]).T
+    
+    skew = np.abs(centralMoment3)/(np.power(std,3)) # std already abs
+    
+    return skew
+
+# Feature 20: Peak to RMS Ratio
+def getPR(data):
+    complexData = data[:,0,:]+(1j*data[:,1,:]) # Data In Complex Form
+    absSquare = np.square(np.abs(complexData))
+    absSquareMax = np.array([np.max(absSquare,axis=1)]).T
+    
+    # Calculate RMS (without Root)
+    rms = np.array([np.mean(absSquare,axis=1)]).T # Consider Abs of Mean?
+    
+    # Calculate PR
+    PR = absSquareMax/rms
+    
+    return PR
+
+# Feature 21: Peak to Average Ratio
+def getPA(data):
+    complexData = data[:,0,:]+(1j*data[:,1,:]) # Data In Complex Form
+    absData = np.abs(complexData)
+    absMax = np.array([np.max(absData,axis=1)]).T
+    
+    # Calculate Mean
+    meanData = np.array([np.mean(absData,axis=1)]).T # Consider Abs of Mean?
+    
+    # Calculate PA
+    PA = absMax / meanData
+    
+    return PA
 
 # Init Features
 
@@ -252,8 +391,20 @@ def createIPVector(data):
     X2 = normRootSumAmp(data)
     gammaMax = maxPSD(data)
     
+    cumulantC20 = getC20(data)
     cumulantC21 = getC21(data)
+    cumulantC40 = getC40(data)
+    cumulantC41 = getC41(data)
+    cumulantC42 = getC42(data)
+    cumulantC63 = getC63(data)
+    cumulantC80 = getC80(data)
+    
+    kurtosis = getKurtosis(data)
+    skewness = getSkewness(data)
+    
+    pr = getPR(data)
+    pa = getPA(data)
 
     # Concat
-    xtrainIP = np.concatenate((beta,sigDp,sigAp,sigAa,sigAF,sigV,v20,meanMagX,X2,gammaMax,cumulantC21),axis=1)
+    xtrainIP = np.concatenate((beta,sigDp,sigAp,sigAa,sigAF,sigV,v20,meanMagX,X2,gammaMax,cumulantC20,cumulantC21,cumulantC40,cumulantC41,cumulantC42,cumulantC63,cumulantC80,kurtosis,skewness,pr,pa),axis=1)
     return xtrainIP
