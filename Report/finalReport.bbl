@@ -51,4 +51,20 @@ S.~Ramjee, S.~Ju, D.~Yang, X.~Liu, A.~E. Gamal, and Y.~C. Eldar, ``Fast deep
 T.~J. O'Shea, J.~Corgan, and T.~C. Clancy, ``Convolutional radio modulation
   recognition networks,'' 2016.
 
+\bibitem{catEye}
+\BIBentryALTinterwordspacing
+D.~H. HUBEL and T.~N. WIESEL, ``Receptive fields of single neurones in the
+  cat's striate cortex,'' \emph{The Journal of physiology}, vol. 148, no.~3,
+  pp. 574--591, Oct 1959, 14403679[pmid]. [Online]. Available:
+  \url{https://pubmed.ncbi.nlm.nih.gov/14403679}
+\BIBentrySTDinterwordspacing
+
+\bibitem{neocognitron}
+\BIBentryALTinterwordspacing
+K.~Fukushima, ``Neocognitron: A self-organizing neural network model for a
+  mechanism of pattern recognition unaffected by shift in position,''
+  \emph{Biological Cybernetics}, vol.~36, no.~4, pp. 193--202, 1980. [Online].
+  Available: \url{https://doi.org/10.1007/BF00344251}
+\BIBentrySTDinterwordspacing
+
 \end{thebibliography}

@@ -38,6 +38,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import scipy.stats as sp
 
+random.seed(777)
 np.random.seed(777)
 
 index = np.arange(0,220000)
@@ -51,6 +52,16 @@ trainX = X[trainIdx]
 
 testX = X[testIdx]
 #X_test = np.expand_dims(testX, axis=-1) # Important
+
+# One Hot Encode Labels
+from sklearn import preprocessing
+lb = preprocessing.LabelBinarizer()
+lb.fit(np.asarray(lbl)[:,0])
+print(lb.classes_)
+lbl_encoded=lb.transform(np.asarray(lbl)[:,0])
+y_train = lbl_encoded[trainIdx]
+#y_train = ytrain[realTrainIdx]
+y_test=lbl_encoded[testIdx]
 
 # Feature Extraction Methods
 
@@ -104,7 +115,7 @@ def betaRatio(data):
     return beta
 
 # Feature 2: Standard Deviation of Direct Instantaneous Phase
-def sigmaDP(data,n):
+def sigmaDP(data,n,thresh):
     # n is a flag for normalization
     # n = 1 : Normalize
     
@@ -114,6 +125,8 @@ def sigmaDP(data,n):
     
     if(n==1):
         dataReal, dataImag = normalizeMean(data)
+        
+    #tempReal = dataReal[np.where(dataReal)]
     
     # Perform I / R
     tanArg = dataImag/dataReal
@@ -125,6 +138,8 @@ def sigmaDP(data,n):
     sigDP = np.array([np.std(phase,axis=1)])
     
     return phase, sigDP.T # Also Returns Phase for Use Later
+
+sigmaDP(testX,1,0.5)
 
 # Feature 3: Standard Deviation of Absolute Value of Non Linear Component of Instantaneous Phase
 def sigmaAP(data,n):
