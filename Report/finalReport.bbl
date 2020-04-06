@@ -29,42 +29,11 @@ T.~O'Shea and N.~West, ``Radio machine learning dataset generation with gnu
   \url{https://pubs.gnuradio.org/index.php/grcon/article/view/11}
 \BIBentrySTDinterwordspacing
 
-\bibitem{ann1}
+\bibitem{stratSamp}
 \BIBentryALTinterwordspacing
-S.~H. Lee, K.-Y. Kim, and Y.~Shin, ``Effective feature selection method for
-  deep learning-based automatic modulation classification scheme using
-  higher-order statistics,'' \emph{Applied Sciences}, vol.~10, no.~2, p. 588,
-  Jan 2020. [Online]. Available: \url{http://dx.doi.org/10.3390/app10020588}
-\BIBentrySTDinterwordspacing
-
-\bibitem{ann2}
-B.~{Kim}, J.~{Kim}, H.~{Chae}, D.~{Yoon}, and J.~W. {Choi}, ``Deep neural
-  network-based automatic modulation classification technique,'' in \emph{2016
-  International Conference on Information and Communication Technology
-  Convergence (ICTC)}, 2016, pp. 579--582.
-
-\bibitem{cnn1}
-S.~Ramjee, S.~Ju, D.~Yang, X.~Liu, A.~E. Gamal, and Y.~C. Eldar, ``Fast deep
-  learning for automatic modulation classification,'' 2019.
-
-\bibitem{cnn2}
-T.~J. O'Shea, J.~Corgan, and T.~C. Clancy, ``Convolutional radio modulation
-  recognition networks,'' 2016.
-
-\bibitem{catEye}
-\BIBentryALTinterwordspacing
-D.~H. HUBEL and T.~N. WIESEL, ``Receptive fields of single neurones in the
-  cat's striate cortex,'' \emph{The Journal of physiology}, vol. 148, no.~3,
-  pp. 574--591, Oct 1959, 14403679[pmid]. [Online]. Available:
-  \url{https://pubmed.ncbi.nlm.nih.gov/14403679}
-\BIBentrySTDinterwordspacing
-
-\bibitem{neocognitron}
-\BIBentryALTinterwordspacing
-K.~Fukushima, ``Neocognitron: A self-organizing neural network model for a
-  mechanism of pattern recognition unaffected by shift in position,''
-  \emph{Biological Cybernetics}, vol.~36, no.~4, pp. 193--202, 1980. [Online].
-  Available: \url{https://doi.org/10.1007/BF00344251}
+``Encyclopedia of survey research methods au - lavrakas, paul,'' Thousand Oaks,
+  California, 2008. [Online]. Available:
+  \url{https://methods.sagepub.com/reference/encyclopedia-of-survey-research-methods}
 \BIBentrySTDinterwordspacing
 
 \end{thebibliography}

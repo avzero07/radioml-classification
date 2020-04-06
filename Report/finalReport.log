@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7300 64-bit) (preloaded format=pdflatex 2020.2.5)  5 APR 2020 22:22
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7300 64-bit) (preloaded format=pdflatex 2020.2.5)  6 APR 2020 16:32
 entering extended mode
 **./finalReport.tex
 (finalReport.tex
@@ -112,55 +112,155 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <24> not available
 \IEEEPARstartletwidth=\dimen157
 \c@IEEEbiography=\count181
 \@IEEEtranrubishbin=\box46
+) ("D:\Work Software Core\Miktex\tex/latex/graphics\graphicx.sty"
+Package: graphicx 2019/11/30 v1.2a Enhanced LaTeX Graphics (DPC,SPQR)
+
+("D:\Work Software Core\Miktex\tex/latex/graphics\keyval.sty"
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks15
+)
+("D:\Work Software Core\Miktex\tex/latex/graphics\graphics.sty"
+Package: graphics 2019/11/30 v1.4a Standard LaTeX Graphics (DPC,SPQR)
+
+("D:\Work Software Core\Miktex\tex/latex/graphics\trig.sty"
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+)
+("D:\Work Software Core\Miktex\tex/latex/graphics-cfg\graphics.cfg"
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 105.
+
+("D:\Work Software Core\Miktex\tex/latex/graphics-def\pdftex.def"
+File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
+))
+\Gin@req@height=\dimen158
+\Gin@req@width=\dimen159
+)
+("D:\Work Software Core\Miktex\tex/latex/float\float.sty"
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count182
+\float@exts=\toks16
+\float@box=\box47
+\@float@everytoks=\toks17
+\@floatcapt=\box48
+)
+("D:\Work Software Core\Miktex\tex/latex/caption\caption.sty"
+Package: caption 2020/01/03 v3.4h Customizing captions (AR)
+
+("D:\Work Software Core\Miktex\tex/latex/caption\caption3.sty"
+Package: caption3 2020/01/03 v1.8h caption3 kernel (AR)
+Package caption3 Info: TeX engine: e-TeX on input line 61.
+\captionmargin=\dimen160
+\captionmargin@=\dimen161
+\captionwidth=\dimen162
+\caption@tempdima=\dimen163
+\caption@indent=\dimen164
+\caption@parindent=\dimen165
+\caption@hangindent=\dimen166
+Package caption Info: Unknown document class (or package),
+(caption)             standard defaults will be used.
+Package caption Info: \@makecaption = \long macro:#1#2->\ifx \@captype \@IEEEta
+blestring \footnotesize \bgroup \par \centering \@IEEEtabletopskipstrut {\norma
+lfont \footnotesize #1}\\{\normalfont \footnotesize \scshape #2}\par \addvspace
+ {0.5\baselineskip }\egroup \@IEEEtablecaptionsepspace \else \@IEEEfigurecaptio
+nsepspace \setbox \@tempboxa \hbox {\normalfont \footnotesize {#1.}\nobreakspac
+e \nobreakspace #2}\ifdim \wd \@tempboxa >\hsize \setbox \@tempboxa \hbox {\nor
+malfont \footnotesize {#1.}\nobreakspace \nobreakspace }\parbox [t]{\hsize }{\n
+ormalfont \footnotesize \noindent \unhbox \@tempboxa #2}\else \ifCLASSOPTIONcon
+ference \hbox to\hsize {\normalfont \footnotesize \hfil \box \@tempboxa \hfil }
+\else \hbox to\hsize {\normalfont \footnotesize \box \@tempboxa \hfil }\fi \fi 
+\fi  on input line 1082.
+)
+
+Package caption Warning: Unknown document class (or package),
+(caption)                standard defaults will be used.
+See the caption package documentation for explanation.
+
+\c@caption@flags=\count183
+\c@continuedfloat=\count184
+Package caption Info: float package is loaded.
 ) ("D:\Work Software Core\Miktex\tex/latex/l3backend\l3backend-pdfmode.def"
 File: l3backend-pdfmode.def 2020-02-03 L3 backend support: PDF mode
-\l__kernel_color_stack_int=\count182
-\l__pdf_internal_box=\box47
+\l__kernel_color_stack_int=\count185
+\l__pdf_internal_box=\box49
 )
 (finalReport.aux)
 \openout1 = `finalReport.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
 
 -- Lines per column: 58 (exact).
+("D:\Work Software Core\Miktex\tex/context/base/mkii\supp-pdf.mkii"
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count186
+\scratchdimen=\dimen167
+\scratchbox=\box50
+\nofMPsegments=\count187
+\nofMParguments=\count188
+\everyMPshowfont=\toks18
+\MPscratchCnt=\count189
+\MPscratchDim=\dimen168
+\MPnumerator=\count190
+\makeMPintoPDFobject=\count191
+\everyMPtoPDFconversion=\toks19
+) ("D:\Work Software Core\Miktex\tex/latex/epstopdf-pkg\epstopdf-base.sty"
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+85.
+)
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: End \AtBeginDocument code.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <9> on input line 90.
+(Font)              <7> on input line 145.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 90.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 90.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 120.
-(finalReport.bbl) [1{C:/Users/aksha/AppData/Local/MiKTeX/2.9/pdftex/config/pdft
-ex.map}] (finalReport.aux) ) 
+(Font)              <5> on input line 145.
+
+[1{C:/Users/aksha/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
+<Images/stratSampleModTech.png, id=11, 626.34pt x 266.9975pt>
+File: Images/stratSampleModTech.png Graphic file (type png)
+<use Images/stratSampleModTech.png>
+Package pdftex.def Info: Images/stratSampleModTech.png  used on input line 161.
+
+(pdftex.def)             Requested size: 375.80688pt x 160.19972pt.
+<Images/stratSampleSNR.png, id=13, 620.3175pt x 266.9975pt>
+File: Images/stratSampleSNR.png Graphic file (type png)
+<use Images/stratSampleSNR.png>
+Package pdftex.def Info: Images/stratSampleSNR.png  used on input line 163.
+(pdftex.def)             Requested size: 372.19337pt x 160.19972pt.
+
+(finalReport.bbl [2 <./Images/stratSampleModTech.png> <./Images/stratSampleSNR.
+png>]) [3] (finalReport.aux) ) 
 Here is how much of TeX's memory you used:
- 1231 strings out of 481565
- 23864 string characters out of 2923480
- 258402 words of memory out of 3000000
- 16522 multiletter control sequences out of 15000+200000
- 569454 words of font info for 85 fonts, out of 3000000 for 9000
- 1144 hyphenation exceptions out of 8191
- 27i,5n,21p,670b,171s stack positions out of 5000i,500n,10000p,200000b,50000s
-{D:/Work Software Core/Miktex/fonts/enc/dvips/base/
-8r.enc}<D:/Work Software Core/Miktex/fonts/type1/urw/times/utmb8a.pfb><D:/Work 
-Software Core/Miktex/fonts/type1/urw/times/utmr8a.pfb><D:/Work Software Core/Mi
-ktex/fonts/type1/urw/times/utmri8a.pfb>
-Output written on finalReport.pdf (1 page, 47500 bytes).
+ 3138 strings out of 481565
+ 54970 string characters out of 2923480
+ 292214 words of memory out of 3000000
+ 18397 multiletter control sequences out of 15000+200000
+ 563861 words of font info for 75 fonts, out of 3000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 41i,6n,42p,935b,286s stack positions out of 5000i,500n,10000p,200000b,50000s
+{D:/Work Software Core/Miktex/fonts/enc/dvips/bas
+e/8r.enc}<D:/Work Software Core/Miktex/fonts/type1/public/amsfonts/cm/cmmi10.pf
+b><D:/Work Software Core/Miktex/fonts/type1/public/amsfonts/cm/cmr10.pfb><D:/Wo
+rk Software Core/Miktex/fonts/type1/public/amsfonts/cm/cmr7.pfb><D:/Work Softwa
+re Core/Miktex/fonts/type1/urw/times/utmb8a.pfb><D:/Work Software Core/Miktex/f
+onts/type1/urw/times/utmr8a.pfb><D:/Work Software Core/Miktex/fonts/type1/urw/t
+imes/utmri8a.pfb>
+Output written on finalReport.pdf (3 pages, 97771 bytes).
 PDF statistics:
- 19 PDF objects out of 1000 (max. 8388607)
+ 42 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 11 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -153,7 +153,7 @@ def strataHist(labelArray,strata,strataList,dataName):
         modString = list()
         x = np.arange(0,11,1)
         y = np.arange(0,22000,2000)
-        ptitle = 'Modulation'
+        ptitle = 'Modulation Technique'
         for i in np.arange(0,len(strataList),1):
             cList.append(getMODCount(labelArray,strataList[i]))
         
@@ -162,34 +162,70 @@ def strataHist(labelArray,strata,strataList,dataName):
         strataList = modString
         
     plt.figure(figsize=(8, 6))
-    plt.bar(x,cList)
+    plt.bar(x,cList,label=dataName+' Samples')
     plt.yticks(y)
-    plt.ylabel('Number of Samples')
+    plt.ylabel('Number of Data Samples')
     plt.xticks(x,strataList)
-    plt.xlabel('SNR')
+    plt.xlabel(ptitle)
+    plt.legend(loc='upper right')
+    plt.grid()
     plt.title('Histogram of '+dataName+' Data Based on '+ptitle)
     
+    return x,cList
+    
 # Plot strataHist
-strataHist(lblArray,1,snrs,'Input') # SNR
-strataHist(lblArray,0,mods,'Input') # Mods
+xInp, xcList = strataHist(lblArray,1,snrs,'Input') # SNR
+xInpMod, xcListMod = strataHist(lblArray,0,mods,'Input') # Mods
 
 # strataHist of Train Data
 interLabelArray = lblArray[trainIdx,:]
 trainLabelArray = interLabelArray[realTrainIdx]
-strataHist(trainLabelArray,1,snrs,'Training') # SNR
-strataHist(trainLabelArray,0,mods,'Training') # Mods
+xInpTrain, xcListTrain = strataHist(trainLabelArray,1,snrs,'Training') # SNR
+xInpTrainMod, xcListTrainMod = strataHist(trainLabelArray,0,mods,'Training') # Mods
 
 # strataHist of Valid Data
 validLabelArray = interLabelArray[valIdx]
-strataHist(validLabelArray,1,snrs,'Training') # SNR
-strataHist(validLabelArray,0,mods,'Training') # Mods
+xInpValid, xcListValid = strataHist(validLabelArray,1,snrs,'Validation') # SNR
+xInpValidMod, xcListValidMod =strataHist(validLabelArray,0,mods,'Validation') # Mods
 
 # strataHist of Test Data
 testLabelArray = lblArray[testIdx,:]
-strataHist(testLabelArray,1,snrs,'Testing') # SNR
-strataHist(testLabelArray,0,mods,'Testing') # Mods
+xInpTest, xcListTest = strataHist(testLabelArray,1,snrs,'Testing') # SNR
+xInptTestMod, xcListTestMod = strataHist(testLabelArray,0,mods,'Testing') # Mods
 
+# SNR Combo
+plt.figure(figsize=(10, 4))
+ax = plt.subplot(111)
+ax.bar(np.arange(-20,20,2)-0.5,xcListValid,width=0.5,label='Validation Samples')
+ax.bar(np.arange(-20,20,2),xcListTrain,width=0.5,label='Training Samples')
+ax.bar(np.arange(-20,20,2)+0.5,xcListTest,width=0.5,label='Testing Samples')
+plt.yticks(np.arange(0,12000,1000))
+plt.ylabel('Number of Data Samples')
+plt.ylim(0,9000)
+plt.xticks(xInpTrain,snrs)
+plt.xlabel('SNR')
+plt.legend(loc='upper right')
+plt.grid()
+#plt.title('Histogram of Data Partitions Based on SNR')
 
+modString = list()
+for i in range(0,len(mods)):
+    modString.append(mods[i].decode('ascii'))
+
+# MOD Combo
+plt.figure(figsize=(10, 4))
+ax = plt.subplot(111)
+ax.bar(np.arange(0,11,1)-0.2,xcListValidMod,width=0.2,label='Validation Samples')
+ax.bar(np.arange(0,11,1),xcListTrainMod,width=0.2,label='Training Samples')
+ax.bar(np.arange(0,11,1)+0.2,xcListTestMod,width=0.2,label='Testing Samples')
+plt.yticks(np.arange(0,22000,2000))
+plt.ylabel('Number of Data Samples')
+plt.ylim(0,16000)
+plt.xticks(np.arange(0,11,1),modString)
+plt.xlabel('Modulation Technique')
+plt.legend(loc='upper right')
+plt.grid()
+#plt.title('Histogram of Data Partitions Based on Modulation Technique')
 # Create Validation Data Set
 #indexVal = np.arange(0,110000)
 #random.shuffle(indexVal)
