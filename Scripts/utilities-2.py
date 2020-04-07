@@ -27,8 +27,8 @@ for mod in mods:
 X = np.vstack(X)
 
 #  into training and test sets of the form we can train/test on 
-random.seed(777)
-np.random.seed(777)
+random.seed(77)
+np.random.seed(77)
 
 
 index = np.arange(0,220000)

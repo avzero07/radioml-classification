@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7300 64-bit) (preloaded format=pdflatex 2020.2.5)  6 APR 2020 16:32
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7300 64-bit) (preloaded format=pdflatex 2020.2.5)  7 APR 2020 02:03
 entering extended mode
 **./finalReport.tex
 (finalReport.tex
@@ -144,19 +144,39 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \@float@everytoks=\toks17
 \@floatcapt=\box48
 )
+("D:\Work Software Core\Miktex\tex/latex/booktabs\booktabs.sty"
+Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
+\heavyrulewidth=\dimen160
+\lightrulewidth=\dimen161
+\cmidrulewidth=\dimen162
+\belowrulesep=\dimen163
+\belowbottomsep=\dimen164
+\aboverulesep=\dimen165
+\abovetopsep=\dimen166
+\cmidrulesep=\dimen167
+\cmidrulekern=\dimen168
+\defaultaddspace=\dimen169
+\@cmidla=\count183
+\@cmidlb=\count184
+\@aboverulesep=\dimen170
+\@belowrulesep=\dimen171
+\@thisruleclass=\count185
+\@lastruleclass=\count186
+\@thisrulewidth=\dimen172
+)
 ("D:\Work Software Core\Miktex\tex/latex/caption\caption.sty"
 Package: caption 2020/01/03 v3.4h Customizing captions (AR)
 
 ("D:\Work Software Core\Miktex\tex/latex/caption\caption3.sty"
 Package: caption3 2020/01/03 v1.8h caption3 kernel (AR)
 Package caption3 Info: TeX engine: e-TeX on input line 61.
-\captionmargin=\dimen160
-\captionmargin@=\dimen161
-\captionwidth=\dimen162
-\caption@tempdima=\dimen163
-\caption@indent=\dimen164
-\caption@parindent=\dimen165
-\caption@hangindent=\dimen166
+\captionmargin=\dimen173
+\captionmargin@=\dimen174
+\captionwidth=\dimen175
+\caption@tempdima=\dimen176
+\caption@indent=\dimen177
+\caption@parindent=\dimen178
+\caption@hangindent=\dimen179
 Package caption Info: Unknown document class (or package),
 (caption)             standard defaults will be used.
 Package caption Info: \@makecaption = \long macro:#1#2->\ifx \@captype \@IEEEta
@@ -176,45 +196,50 @@ Package caption Warning: Unknown document class (or package),
 (caption)                standard defaults will be used.
 See the caption package documentation for explanation.
 
-\c@caption@flags=\count183
-\c@continuedfloat=\count184
+\c@caption@flags=\count187
+\c@continuedfloat=\count188
 Package caption Info: float package is loaded.
-) ("D:\Work Software Core\Miktex\tex/latex/l3backend\l3backend-pdfmode.def"
+) ("D:\Work Software Core\Miktex\tex/latex/caption\subcaption.sty"
+Package: subcaption 2020/01/22 v1.3d Sub-captions (AR)
+\c@subfigure=\count189
+\c@subtable=\count190
+)
+("D:\Work Software Core\Miktex\tex/latex/l3backend\l3backend-pdfmode.def"
 File: l3backend-pdfmode.def 2020-02-03 L3 backend support: PDF mode
-\l__kernel_color_stack_int=\count185
+\l__kernel_color_stack_int=\count191
 \l__pdf_internal_box=\box49
 )
 (finalReport.aux)
 \openout1 = `finalReport.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
 
 -- Lines per column: 58 (exact).
 ("D:\Work Software Core\Miktex\tex/context/base/mkii\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count186
-\scratchdimen=\dimen167
+\scratchcounter=\count192
+\scratchdimen=\dimen180
 \scratchbox=\box50
-\nofMPsegments=\count187
-\nofMParguments=\count188
+\nofMPsegments=\count193
+\nofMParguments=\count194
 \everyMPshowfont=\toks18
-\MPscratchCnt=\count189
-\MPscratchDim=\dimen168
-\MPnumerator=\count190
-\makeMPintoPDFobject=\count191
+\MPscratchCnt=\count195
+\MPscratchDim=\dimen181
+\MPnumerator=\count196
+\makeMPintoPDFobject=\count197
 \everyMPtoPDFconversion=\toks19
 ) ("D:\Work Software Core\Miktex\tex/latex/epstopdf-pkg\epstopdf-base.sty"
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
@@ -224,43 +249,99 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 145.
+(Font)              <7> on input line 149.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 145.
+(Font)              <5> on input line 149.
 
 [1{C:/Users/aksha/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
 <Images/stratSampleModTech.png, id=11, 626.34pt x 266.9975pt>
 File: Images/stratSampleModTech.png Graphic file (type png)
 <use Images/stratSampleModTech.png>
-Package pdftex.def Info: Images/stratSampleModTech.png  used on input line 161.
+Package pdftex.def Info: Images/stratSampleModTech.png  used on input line 165.
 
 (pdftex.def)             Requested size: 375.80688pt x 160.19972pt.
 <Images/stratSampleSNR.png, id=13, 620.3175pt x 266.9975pt>
 File: Images/stratSampleSNR.png Graphic file (type png)
 <use Images/stratSampleSNR.png>
-Package pdftex.def Info: Images/stratSampleSNR.png  used on input line 163.
+Package pdftex.def Info: Images/stratSampleSNR.png  used on input line 167.
 (pdftex.def)             Requested size: 372.19337pt x 160.19972pt.
+ [2 <./Images/stratSampleModTech.png> <./Images/stratSampleSNR.png>] [3]
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 211.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 211.
+<Images/cnnavPerf.png, id=22, 387.4475pt x 279.0425pt>
+File: Images/cnnavPerf.png Graphic file (type png)
+<use Images/cnnavPerf.png>
+Package pdftex.def Info: Images/cnnavPerf.png  used on input line 237.
+(pdftex.def)             Requested size: 193.72327pt x 139.5209pt.
+<Images/cnnavPerfMet.png, id=23, 387.4475pt x 279.0425pt>
+File: Images/cnnavPerfMet.png Graphic file (type png)
+<use Images/cnnavPerfMet.png>
+Package pdftex.def Info: Images/cnnavPerfMet.png  used on input line 243.
+(pdftex.def)             Requested size: 193.72327pt x 139.5209pt.
+<Images/cnnACCSNR.png, id=24, 498.86375pt x 388.45125pt>
+File: Images/cnnACCSNR.png Graphic file (type png)
+<use Images/cnnACCSNR.png>
+Package pdftex.def Info: Images/cnnACCSNR.png  used on input line 255.
+(pdftex.def)             Requested size: 249.43126pt x 194.22514pt.
+<Images/cnnoverallConfMat.png, id=25, 338.26375pt x 295.1025pt>
+File: Images/cnnoverallConfMat.png Graphic file (type png)
+<use Images/cnnoverallConfMat.png>
+Package pdftex.def Info: Images/cnnoverallConfMat.png  used on input line 261.
+(pdftex.def)             Requested size: 236.78299pt x 206.57033pt.
 
-(finalReport.bbl [2 <./Images/stratSampleModTech.png> <./Images/stratSampleSNR.
-png>]) [3] (finalReport.aux) ) 
+Overfull \hbox (4.59991pt too wide) in paragraph at lines 253--264
+ [][]  [] 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<Images/-20.png, id=26, 338.26375pt x 295.1025pt>
+File: Images/-20.png Graphic file (type png)
+<use Images/-20.png>
+Package pdftex.def Info: Images/-20.png  used on input line 271.
+(pdftex.def)             Requested size: 206.39685pt x 180.06628pt.
+<Images/-8.png, id=27, 338.26375pt x 295.1025pt>
+File: Images/-8.png Graphic file (type png)
+<use Images/-8.png>
+Package pdftex.def Info: Images/-8.png  used on input line 272.
+(pdftex.def)             Requested size: 206.39685pt x 180.06628pt.
+<Images/0.png, id=28, 338.26375pt x 295.1025pt>
+File: Images/0.png Graphic file (type png)
+<use Images/0.png>
+Package pdftex.def Info: Images/0.png  used on input line 273.
+(pdftex.def)             Requested size: 206.39685pt x 180.06628pt.
+<Images/18.png, id=29, 338.26375pt x 295.1025pt>
+File: Images/18.png Graphic file (type png)
+<use Images/18.png>
+Package pdftex.def Info: Images/18.png  used on input line 274.
+(pdftex.def)             Requested size: 206.39685pt x 180.06628pt.
+(finalReport.bbl [4 <./Images/cnnavPerf.png> <./Images/cnnavPerfMet.png>]
+
+LaTeX Warning: Text page 5 contains only floats.
+
+[5 <./Images/cnnACCSNR.png> <./Images/cnnoverallConfMat.png> <./Images/-20.png>
+ <./Images/-8.png> <./Images/0.png> <./Images/18.png>]) [6] (finalReport.aux) )
+ 
 Here is how much of TeX's memory you used:
- 3138 strings out of 481565
- 54970 string characters out of 2923480
- 292214 words of memory out of 3000000
- 18397 multiletter control sequences out of 15000+200000
- 563861 words of font info for 75 fonts, out of 3000000 for 9000
+ 3344 strings out of 481565
+ 58026 string characters out of 2923480
+ 298008 words of memory out of 3000000
+ 18589 multiletter control sequences out of 15000+200000
+ 566762 words of font info for 82 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,6n,42p,935b,286s stack positions out of 5000i,500n,10000p,200000b,50000s
-{D:/Work Software Core/Miktex/fonts/enc/dvips/bas
-e/8r.enc}<D:/Work Software Core/Miktex/fonts/type1/public/amsfonts/cm/cmmi10.pf
-b><D:/Work Software Core/Miktex/fonts/type1/public/amsfonts/cm/cmr10.pfb><D:/Wo
-rk Software Core/Miktex/fonts/type1/public/amsfonts/cm/cmr7.pfb><D:/Work Softwa
-re Core/Miktex/fonts/type1/urw/times/utmb8a.pfb><D:/Work Software Core/Miktex/f
-onts/type1/urw/times/utmr8a.pfb><D:/Work Software Core/Miktex/fonts/type1/urw/t
-imes/utmri8a.pfb>
-Output written on finalReport.pdf (3 pages, 97771 bytes).
+ 41i,8n,49p,1044b,426s stack positions out of 5000i,500n,10000p,200000b,50000s
+{D:/Work Software Core/Miktex/fonts/enc/dvips/base/8r.enc}<D:/Work Software Cor
+e/Miktex/fonts/type1/public/amsfonts/cm/cmmi10.pfb><D:/Work Software Core/Mikte
+x/fonts/type1/public/amsfonts/cm/cmr10.pfb><D:/Work Software Core/Miktex/fonts/
+type1/public/amsfonts/cm/cmr7.pfb><D:/Work Software Core/Miktex/fonts/type1/urw
+/times/utmb8a.pfb><D:/Work Software Core/Miktex/fonts/type1/urw/times/utmr8a.pf
+b><D:/Work Software Core/Miktex/fonts/type1/urw/times/utmri8a.pfb>
+Output written on finalReport.pdf (6 pages, 218795 bytes).
 PDF statistics:
- 42 PDF objects out of 1000 (max. 8388607)
+ 67 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 11 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 51 words of extra memory for PDF output out of 10000 (max. 10000000)
 

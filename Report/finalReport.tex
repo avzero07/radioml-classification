@@ -5,8 +5,12 @@
 
 \usepackage{graphicx}
 \usepackage{float}
+\usepackage{booktabs}
 \usepackage{caption}
+\usepackage{subcaption}
 \graphicspath{{Images/}}
+
+\setlength{\parskip}{1em} 
 
 \begin{document}
 %
@@ -142,7 +146,7 @@ The goal of this project was to design an Artificial Neural Network (ANN) soluti
 
 \subsection{Description of Data}
 
-The dataset consists of 220,000 labelled signals. Signal samples are split and their real and imaginary components are stored separately. In this way, each signal is a 2x128 array representing 128 $\mu$ s of a received waveform sampled at $10^{6}$ samples/second. Each signal is labelled based on both the modulation technique as well as the signal-to-noise ratio (SNR) value. There are 11 different classes based on modulation techniques  (8PSK, AM-DSB, AM-SSB, BPSK, CPFSK, GFSK, PAM4, QAM16, QAM64, QPSK, WBFM). There are 20 different classes based on the SNR (-20, -18, -16, -14, -12, -10, -8, -6, -4, -2, 0, 2, 4, 6, 8, 10, 12, 14, 16, 18).
+The dataset consists of 220,000 labelled signals. Signal samples are split and their real and imaginary components are stored separately. In this way, each signal is a 2x128 array representing 128 $\mu$s of a received waveform sampled at $10^{6}$ samples/second. Each signal is labelled based on both the modulation technique as well as the signal-to-noise ratio (SNR) value. There are 11 different classes based on modulation techniques  (8PSK, AM-DSB, AM-SSB, BPSK, CPFSK, GFSK, PAM4, QAM16, QAM64, QPSK, WBFM). There are 20 different classes based on the SNR (-20, -18, -16, -14, -12, -10, -8, -6, -4, -2, 0, 2, 4, 6, 8, 10, 12, 14, 16, 18).
 
 \subsection{Pre-Processing}
 
@@ -164,7 +168,7 @@ Each partition of the data set was formed in a way that there was adequate repre
 	\caption{Histogram of Partitioned Data, grouped by SNR}		
 \end{figure}
 
-The Keras framework is able to reserve a portion of the training set for validation purposes at the time of training. However, the source of entropy for this is not within the user's control. Data was manually partitioned (using seeded pseudo-random number generators) in an effort to ensure that datasets stayed the same across multiple runs.
+The Keras framework is able to reserve a portion of the training set for validation purposes at the time of training. However, the source of entropy for this is not within the user's control. Data was manually partitioned (using seeded pseudo-random number generators) in an effort to ensure that datasets stayed the same across different tests.
 
 \section{Artificial Neural Network (ANN) Solution}
 
@@ -182,11 +186,95 @@ The Keras framework is able to reserve a portion of the training set for validat
 
 \subsection{Background}
 
+CNNs take inspiration from the mammalian visual system. In particular, the way how the brain processes visual information hierarchically often starting with simple structures such as oriented edges \cite{catEye}. In the late 70s, Fukushima applied this idea to create the Neocognitron \cite{neocognitron}, a predecessor to CNNs, which was built to detect handwritten characters. The Neocognitron introduced the notion of a convolutional layer which was a spatially invariant filter that could be used to detect features irrespective of location in an image. The coefficients of the convolutional filter still had to be trained via some supervised learning algorithm. Fast forward to 1998, when LeCun et al \cite{lenet5} applied error backpropagation to train convolutional filter coefficients leading to the birth of CNNs as we now know them.
+
+While CNNs, like UNet \cite{unet} may be built using convolutional layers alone, they often make use of fully connected neurons when performing classification. In a CNN designed for classification, the initial convolutional layers essentially perform feature extraction.
+
 \subsection{Related Work}
+
+CNNs are commonly used in problems where the input data consist of images. However, they can be useful in any task where data has features that are spatially relevant such as in the case of text classification or speech recognition. Along the same lines, CNNs can be useful in AMC where the input data is made up of finite number of symbols that are unique for a given modulation scheme. 
+
+There are a lot of papers that present the solutions to the AMC problem. Each paper proposes one type of network design or the other and claims it to be best suited to the task. However, there’s often nothing more than empirical evidence to back their claims. This sort of situation is also commonplace in other domains, computer vision for instance, where neural networks are rampant.
+
+That said, a number of recent publications were reviewed in an effort to identify “best-practices” that have proven helpful for designing a CNN for AMC. O’Shea et al \cite{cnn2} achieve reasonably good performance on the RADIOML 2016.10A dataset with two CNN based networks. These networks are able to get over 10\% accuracy for the lowest SNRs and above 80\% accuracy for higher SNRs. Both networks consist of two convolutional layers and a fully connected layer (excluding the final classification layer). They differ only in that one design has more filters in the convolutional layers that the other. Both networks make use of the Adam optimizer as well as dropout for regularization. A lot of details are left to interpretation. Ramjee et al \cite{cnn1} make use of a deeper CNN design with four convolutional layers based on the more complex CNN proposed in \cite{cnn2}. While they report a higher accuracy at high SNRs (over 80\% at 18dB), their network does not do well at the lower SNRs. 
+
+Lee and colleagues propose an interesting solution in \cite{featImage} wherein they first extract a number of statistical features (such as higher order cumulants) which are then used to compose a “feature image” which is then fed into a CNN. Their claim is that feature images are distinct for a given modulation technique. The results they report indicate an improvement in the accuracies at high SNRs (nearly 100\% over 4dB). The performance at lower SNRs are not very remarkable.
+
+In \cite{ddriven}, Wang and Yang highlight a problem that I have observed during my experiments. It is difficult for most CNNs that operate on the input signal in rectangular form to differentiate between QAM-16 and QAM-64 modulation even at the highest SNR. The authors use an additional CNN used exclusively to differentiate between QAM-16 and QAM-64. This secondary network uses constellation diagrams as input.
 
 \subsection{Network Design}
 
+\begin{table}
+\centering
+\caption{Design of CNN-AV}
+\label{tab:my-table}
+\begin{tabular}{@{}cccc@{}}
+\toprule
+Layer & Layer Type  & Description                               & Activation \\ \midrule
+1     & Convolution & 512 Filters, Size = (1,3), Stride = (1,1) & ReLU       \\
+2     & MaxPooling  & Window = (1,2), Stride = (1,2)            & -          \\
+3     & Dropout     & Dropout Rate = 0.5                        & -          \\
+4     & Convolution & 256 Filters, Size = (1,3), Stride = (1,1) & ReLu       \\
+5     & MaxPooling  & Window = (1,2), Stride = (1,2)            & -          \\
+6     & Dropout     & Dropout Rate = 0.5                        & -          \\
+7     & Convolution & 128 Filters, Size = (1,3), Stride = (1,1) & ReLu       \\
+8     & MaxPooling  & Window = (1,2), Stride = (1,2)            & -          \\
+9     & Dropout     & Dropout Rate = 0.5                        & -          \\
+10    & Convolution & 64 Filters, Size = (1,3), Stride = (1,1)  & ReLu       \\
+11    & MaxPooling  & Window = (1,2), Stride = (1,2)            & -          \\
+12    & Dropout     & Dropout Rate = 0.5                        & -          \\
+13    & Dense       & Units = 128                               & ReLu       \\
+14    & Dense       & Units = 11                                & SoftMax    \\ \bottomrule
+\end{tabular}
+\end{table}
+
 \subsection{Observations}
+
+\begin{figure*}[h]
+    \centering
+    \begin{subfigure}[b]{0.4\textwidth}
+        \centering
+        \includegraphics[scale=0.5]{cnnavPerf}
+        \caption{Training Performance}
+    \end{subfigure}%
+    ~ 
+    \begin{subfigure}[b]{0.4\textwidth}
+        \centering
+        \includegraphics[scale=0.5]{cnnavPerfMet}
+        \caption{Performance Metric}
+    \end{subfigure}
+    \caption{CNN-AV - Accuracy and Loss During Training}
+\end{figure*}
+
+Testing
+
+\begin{figure*}[h]
+    \centering
+    \begin{subfigure}[b]{0.5\textwidth}
+        \centering
+        \includegraphics[scale=0.5]{cnnACCSNR}
+        \caption{Performance Metric}
+    \end{subfigure}%
+    ~ 
+    \begin{subfigure}[b]{0.5\textwidth}
+        \centering
+        \includegraphics[scale=0.7]{cnnoverallConfMat}
+        \caption{Confusion Matrix}
+    \end{subfigure}
+    \caption{Performance of CNN-AV on Test Data}
+\end{figure*}
+
+CONF MATRIX
+
+\begin{figure}[!ht]
+   \centering
+   \subfloat[][]{\includegraphics[width=.4\textwidth]{-20}}\quad
+   \subfloat[][]{\includegraphics[width=.4\textwidth]{-8}}\\
+   \subfloat[][]{\includegraphics[width=.4\textwidth]{0}}\quad
+   \subfloat[][]{\includegraphics[width=.4\textwidth]{18}}
+   \caption{CNN-AV Confusion Matrix at Different SNRs}
+   \label{fig:sub1}
+\end{figure}
 
 \subsection{Results}
 
