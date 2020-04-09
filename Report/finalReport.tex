@@ -8,6 +8,7 @@
 \usepackage{booktabs}
 \usepackage{caption}
 \usepackage{subcaption}
+\usepackage{multirow}
 \graphicspath{{Images/}}
 
 \setlength{\parskip}{1em} 
@@ -158,29 +159,148 @@ Normalization is carried out on feature vectors before they are fed into the res
 
 The available dataset was split in half to form training and testing datasets consisting of 110,000 samples each. The training set was then partitioned once again where 90\% of the samples went on to form the actual Training set and 10\% of the samples used to form a Validation set.
 
-Each partition of the data set was formed in a way that there was adequate representation from all modulation and SNR classes. This was to make sure that the neural network could observe nearly the same number of samples from all possible classes and that there wouldn't be any over-representation or bias for one class or the other. Refer to Figure 1 and Figure 2 which display the histograms of the partitioned dataset based on SNR and Modulation Techniques. This sort of Stratified Sampling \cite{stratSamp} was possible because the original dataset has been designed in such a way that there is equal representation from all classes.
+Each partition of the data set was formed in a way that there was adequate representation from all modulation classes. This was to make sure that the neural network could observe nearly the same number of samples from all possible classes and that there wouldn't be any over-representation or bias for one class or the other. Refer to Figure \ref{strat-sample} which displays the histogram of the partitioned dataset based on Modulation Techniques. This sort of Stratified Sampling \cite{stratSamp} was possible because the original dataset has been designed in order to ensure that there is equal representation from all classes.
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.6]{stratSampleModTech}
 	\caption{Histogram of Partitioned Data, grouped by Modulation Technique}
-	\includegraphics[scale=0.6]{stratSampleSNR}
-	\caption{Histogram of Partitioned Data, grouped by SNR}		
+	\label{strat-sample}
+%	\includegraphics[scale=0.6]{stratSampleSNR}
+%	\caption{Histogram of Partitioned Data, grouped by SNR}		
 \end{figure}
 
 The Keras framework is able to reserve a portion of the training set for validation purposes at the time of training. However, the source of entropy for this is not within the user's control. Data was manually partitioned (using seeded pseudo-random number generators) in an effort to ensure that datasets stayed the same across different tests.
 
-\section{Artificial Neural Network (ANN) Solution}
+\section{Artificial/Deep Neural Network (A/DNN) Solution}
 
 \subsection{Background}
 
+Artificial Neural Networks (ANNs) are models inspired by the nervous system. Artificial neurons can get "activated" by certain inputs and an arrangement of such neurons connected together using weighted links can be used for classification or regression tasks. These networks can be trained by updating connection weights via feedback from outputs. The earliest neural networks only had a single layer which connected the input and output layers. Deep Neural Networks (DNNs) are ANNs with multiple layers in between the input and output layers. DNNs have proved to be useful in dealing with complicated problems that conventional ANNs could not otherwise solve. These days, the term DNN and ANN both refer to fully connected feed forward neural networks and in the context of this work they mean one and the same. These two terms may be used interchangeably but they refer to the same thing unless stated otherwise.
+
 \subsection{Related Work}
+
+DNNs are ubiquitous in regression and classification tasks. For the AMC task, certain features that can provide sufficient separation between modulation classes. The most commonly used features are cumulants. Cumulants are statistical quantities determined using the moments of a probability distribution. Identical distributions will therefore have identical cumulants. In \cite{ann1}, Lee et al conducted an analysis of several second-order, fourth-order and sixth-order cumulants in order to determine which combination of these cumulants would help with AMC for five modulation schemes. They demonstrate that $C_{20}$, $C_{41}$, $C_{42}$ and $C_{63}$ can help discriminate between PSK and QAM modulation schemes. These cumulants are some of the features that have been used in my DNN.
+
+Narendar et al \cite{c42norm} suggest the use of a normalized version of the fourth order cumulant, $C_{42}$, such that $C^N_{42}=\frac{C_{42}}{\left(C_{21}\right)^2}$. They are able to use this normalized $C_{42}$ to achieve good classification results in their AMC system. It should be noted that while their approach to AMC does not make use of neural networks, it is still based on pattern recognition. Neural networks are all about identifying patterns and so, their idea will no doubt be useful in this project.
+
+In \cite{ann2}, Kim et al propose a DNN based solution to AMC that makes use of 21 features extracted from the input signal. Unfortunately, their rationale behind choosing these features isn't clear. Most of these 21 features are based on distribution-based statistics and are either cumulants or other quantities derived from moments (Kurtosis and Skewness). The remaining features are derived from statistics related to characteristics of the input signal such as instantaneous amplitude, phase and power. I found 7 of these features: $C_{40}$, $C_{63}$, $C_{80}$, Kurtosis, Skewness, Peak-to-Rms Power Ratio and Peak-to-average Power Ratios to be useful and have made use of the same in my DNN implementation.
+
+\subsection{Feature Vector}
+
+The input to the DNN is a vector that made up of eleven features that are extracted from the input signal. These features have been selected based on their popularity in the AMC domain as well as for their ability to discriminate between the different modulation classes. These eleven features are defined below.
+
+Let $a=a_I[n]+ja_Q[n]$ be an input signal, whose samples contain the in-phase and quadrature phase components, represented in rectangular notation.
+
+Let $E[.]$ denote the Expectation operator
+
+Let $M_{x,y}=E[(r[n])^{x-y}(r^*[n])^y]$ denote the $(x+y)^{th}$ Order Moment of $r[n]$ 
+
+\begin{enumerate}
+\setlength{\itemsep}{1.2\baselineskip}
+\item Cumulant, $\mid C_{20} \mid\ =\ \mid E\left[a^{2}\left(n\right)\right]\mid$
+\item Cumulant, $\mid C_{21} \mid\ =\ \mid E\left[a\left(n\right)^{2}\right]\mid$
+\item Cumulant, $\mid C_{40} \mid\ =\ \mid M_{40}-3M_{20}^2\mid$
+\item Cumulant, $\mid C_{41} \mid\ =\ \mid M_{40}-3M_{20}M_{21}\mid$
+\item Cumulant, $\mid C_{42}^Norm \mid\ =\ \mid \frac{M_{42}-M_{20}^2-2M_{21}^2}{C_{21}^2}\mid$
+\item Cumulant, $\mid C_{63} \mid\ =\ \mid M_{63}-9M_{21}M_{42}+12M_{21}^3-3M_{20}M_{42}-3M_{22}M_{41}+18M_{20}M_{21}M_{22} \mid$
+\item Cumulant, $\mid C_{80} \mid\ =\ \mid M_{80}-35M_{40}^2-28M_{60}M_{20}+420M_{40}-630M_{20} \mid$
+\item Kurtosis, $K=\ \mid\frac{E\left[a-E\left[a\right]\right]^4}{E\left[\left(a-E\left[a\right]\right)^2\right]^{2}}\mid$ 
+\item Skewness, $S=\ \mid\frac{E\left[a-E\left[a\right]\right]^3}{E\left[\left(a-E\left[a\right]\right)^2\right]^{\frac{3}{2}}}\mid$
+\item Peak-to-RMS Power Ratio, $PR = \frac{max\left(\mid a \mid^2\right)}{\frac{1}{N}\sum_{i=1}^{N}\left(a[i]\right)^2}$
+\item Peak-to-average Power Ratio, $PA = \frac{max\left(\mid a \mid\right)}{\frac{1}{N}\sum_{i=1}^{N}a[i]}$
+
+\end{enumerate}
 
 \subsection{Network Design}
 
+A number of DNN architectures were constructed and trained. The performance of each was then evaluated based on their performance on the validation set. DNN-AV was the best performing network that had the lowest validation loss of \textbf{1.5647} (which occurred at the 71st Epoch). It also had the highest prediction accuracy of \textbf{43.02\%} (average across all modulation classes). The loss and accuracy curves for DNN-AV have been displayed in Figure \ref{fig:performanceDNN}. 
+
+The architecture of DNN-AV has been detailed in TABLE \ref{tab:dnn-arch}. Other design specifics have been detailed in TABLE \ref{tab:dnnDesPar}. The initial design was a much simpler two-layer network which was grown in stages. Increasing the number of neurons and layers did increase performance somewhat but extending the network either in width or length beyond the final design of DNN-AV tended to yield diminishing returns as the performance gain was not justified when considering in the amount of parameters to be computed. Larger networks are prone to overfitting and Dropout regularization as well as early stopping helped ensure that the network would not just memorize the training data.
+
+\begin{table}[]
+\centering
+\caption{Architecture of DNN-AV}
+\label{tab:dnn-arch}
+\begin{tabular}{lccc}
+\hline
+Layer & Layer Type & Description        & Activation \\ \hline
+1     & Dense      & 4096 Units         & ReLU       \\
+2     & Dropout    & Dropout Rate = 0.5 & -          \\
+3     & Dense      & 2048 Units         & ReLu       \\
+4     & Dropout    & Dropout Rate = 0.5 & -          \\
+5     & Dense      & 1024 Units         & ReLu       \\
+6     & Dropout    & Dropout Rate = 0.5 & -          \\
+7     & Dense (Output)      & Units = 11         & SoftMax    \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[]
+\centering
+\caption{Other Design Choices}
+\label{tab:dnnDesPar}
+\begin{tabular}{@{}ll@{}}
+\toprule
+Parameter                          & Description                               \\ \midrule
+Loss Function                      & Categorical Cross-Entropy                 \\
+Weight Optimizer                   & Adam                                      \\
+Activation Function (Hidden Layer) & ReLU                                      \\
+Activation Function (Output Layer) & SoftMax                                   \\
+Regularization                     & Dropout, Early Stopping                   \\
+Weight Initialization              & Xavier Initialization ('Glorot\_Uniform') \\
+Batch Size                         & 1024                                      \\ \bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure*}[h]
+    \centering
+    \begin{subfigure}[b]{0.4\textwidth}
+        \centering
+        \includegraphics[scale=0.5]{dnnavPerf}
+        \caption{Training Performance}
+    \end{subfigure}%
+    ~ 
+    \begin{subfigure}[b]{0.4\textwidth}
+        \centering
+        \includegraphics[scale=0.5]{dnnavPerfMet}
+        \caption{Performance Metric}
+    \end{subfigure}
+    \caption{CNN-AV - Accuracy and Loss During Training}
+    \label{fig:performanceDNN}
+\end{figure*}
+
 \subsection{Observations}
 
-\subsection{Results}
+
+\begin{figure*}[h]
+    \centering
+    \begin{subfigure}[b]{0.5\textwidth}
+        \centering
+        \includegraphics[scale=0.5]{dnnACCSNR}
+        \caption{Performance Metric}
+        \label{dnnACCSNR}
+    \end{subfigure}%
+    ~ 
+    \begin{subfigure}[b]{0.5\textwidth}
+        \centering
+        \includegraphics[scale=0.7]{dnnoverallConfMat}
+        \caption{Confusion Matrix}
+        \label{dnnConfMat}
+    \end{subfigure}
+    \caption{Performance of DNN-AV on Test Data}
+\end{figure*}
+
+\begin{figure}[!ht]
+   \centering
+   \subfloat[][]{\includegraphics[width=.4\textwidth]{-20dnn}}\quad
+   \subfloat[][]{\includegraphics[width=.4\textwidth]{-8dnn}}\\
+   \subfloat[][]{\includegraphics[width=.4\textwidth]{0dnn}}\quad
+   \subfloat[][]{\includegraphics[width=.4\textwidth]{18dnn}}
+   \caption{DNN-AV Confusion Matrices at Different SNRs}
+   \label{fig:dnnConfSep}
+\end{figure}
+
+Figure \ref{dnnACCSNR} displayes the average classification accuracy (across all modulation classes) that DNN-AV achieves at each SNR level. The corresponding confusion matrix is shown in Figure \ref{dnnConfMat}. Figure \ref{fig:dnnConfSep} shows confusion matrices at different SNR values. There's not a lot of difference between the confusion matrices at -20 dB and -8 dB. The DNN does not perform well for input signals having a low SNR. This isn't all that surprising since the features extracted from a noisy signal will no doubt be contaminated. Observing the confusion matrix at 0 dB, we can start to see the diagonal form. At this stage, AM-SSB and PAM-4 have good classification accuracies. Note how the DNN is unable to distinguish between QAM-16 and QAM-64. At higher SNRs (4 dB and above \ref{dnnACCSNR}), the DNN starts performing much better. At 18 dB we can observe a nearly clean diagonal. Pay attention to the confusion between the QAM-16 and QAM-64 classes is a little better. 
 
 \section{Convolutional Neural Network (CNN) Solution}
 
@@ -188,7 +308,7 @@ The Keras framework is able to reserve a portion of the training set for validat
 
 CNNs take inspiration from the mammalian visual system. In particular, the way how the brain processes visual information hierarchically often starting with simple structures such as oriented edges \cite{catEye}. In the late 70s, Fukushima applied this idea to create the Neocognitron \cite{neocognitron}, a predecessor to CNNs, which was built to detect handwritten characters. The Neocognitron introduced the notion of a convolutional layer which was a spatially invariant filter that could be used to detect features irrespective of location in an image. The coefficients of the convolutional filter still had to be trained via some supervised learning algorithm. Fast forward to 1998, when LeCun et al \cite{lenet5} applied error backpropagation to train convolutional filter coefficients leading to the birth of CNNs as we now know them.
 
-While CNNs, like UNet \cite{unet} may be built using convolutional layers alone, they often make use of fully connected neurons when performing classification. In a CNN designed for classification, the initial convolutional layers essentially perform feature extraction.
+While CNNs, like UNet \cite{unet} may be built using convolutional layers alone, they often make use of fully connected neurons when performing classification. In a CNN designed for classification, the convolutional layers essentially perform feature extraction in a hierarchical manner starting with low-level features in the first convolutional layer.
 
 \subsection{Related Work}
 
@@ -202,12 +322,12 @@ Lee and colleagues propose an interesting solution in \cite{featImage} wherein t
 
 In \cite{ddriven}, Wang and Yang highlight a problem that I have observed during my experiments. It is difficult for most CNNs that operate on the input signal in rectangular form to differentiate between QAM-16 and QAM-64 modulation even at the highest SNR. The authors use an additional CNN used exclusively to differentiate between QAM-16 and QAM-64. This secondary network uses constellation diagrams as input.
 
-\subsection{Network Design}
+\subsection{Network Design} 
 
 \begin{table}
 \centering
-\caption{Design of CNN-AV}
-\label{tab:my-table}
+\caption{Architecture of CNN-AV}
+\label{tab:my-table-1a}
 \begin{tabular}{@{}cccc@{}}
 \toprule
 Layer & Layer Type  & Description                               & Activation \\ \midrule
@@ -224,11 +344,32 @@ Layer & Layer Type  & Description                               & Activation \\ 
 11    & MaxPooling  & Window = (1,2), Stride = (1,2)            & -          \\
 12    & Dropout     & Dropout Rate = 0.5                        & -          \\
 13    & Dense       & Units = 128                               & ReLu       \\
-14    & Dense       & Units = 11                                & SoftMax    \\ \bottomrule
-\end{tabular}
+14    & Dense (Output)       & Units = 11                                & SoftMax    \\ \bottomrule
+\end{tabular}%
 \end{table}
 
-\subsection{Observations}
+Several CNN designs were constructed and trained using the same training set. These designs were then compared based their performances on the same validation set. CNN-AV was the best performing network with the lowest validation loss of \textbf{1.2095} (which occurred at the 45th Epoch). It also achieved the highest Average Classification Accuracy (across all modulation techniques) of \textbf{53.81\%}. The loss and accuracies across the number of training Epochs have been plotted in Figure \ref{fig:performanceCNN}. The architecture of CNN-AV has been detailed in TABLE \ref{tab:my-table-1a}. Other design choices for CNN-AV have been detailed in TABLE \ref{tab:my-table-1b}.
+
+Like in the case of the DNN, the design process for the CNN based network was highly empirical. The existence of Pooling layers significantly increased the number of hyper parameters that could be tuned. While the final design for CNN-AV is large, training was still manageable on account of these pooling layers. They helped reduce the dimensionality of outputs from a layer meaning lesser connections and trainable weights to subsequent layers. 
+
+% Please add the following required packages to your document preamble:
+% \usepackage{booktabs}
+\begin{table}[]
+\centering
+\caption{Other Design Choices}
+\label{tab:my-table-1b}
+\begin{tabular}{@{}ll@{}}
+\toprule
+Parameter                          & Description                               \\ \midrule
+Loss Function                      & Categorical Cross-Entropy                 \\
+Weight Optimizer                   & Adam                                      \\
+Activation Function (Hidden Layer) & ReLU                                      \\
+Activation Function (Output Layer) & SoftMax                                   \\
+Regularization                     & Dropout, Early Stopping                   \\
+Weight Initialization              & Xavier Initialization ('Glorot\_Uniform') \\
+Batch Size                         & 1000                                      \\ \bottomrule
+\end{tabular}
+\end{table}
 
 \begin{figure*}[h]
     \centering
@@ -244,9 +385,12 @@ Layer & Layer Type  & Description                               & Activation \\ 
         \caption{Performance Metric}
     \end{subfigure}
     \caption{CNN-AV - Accuracy and Loss During Training}
+    \label{fig:performanceCNN}
 \end{figure*}
 
-Testing
+\subsection{Observations}
+
+Figure \ref{cnnACCSNR} displays the average classification accuracy (across all modulation classes) that CNN-AV achieves at each SNR level. The corresponding confusion matrix is shown in Figure \ref{cnnConfMat}. Figure 5 shows confusion matrix plot for specific SNR values. At -20 dB, CNN-AV has poor performance with all inputs signals classified as AM-SSB. The performance gets better as SNR increases. At SNRs greater than 0 dB, the performance improvement is minimal as seen from Figure \ref{fig:cnnConfSep} (c) and (d). While there is a slight improvement, QAM-16 signals are still misclassified as QAM-64. These two modulation schemes are essentially the same and differ only by the number of bits used to encode symbols. It appears that the CNN is unable to discern between the two just based on the wave envelope.
 
 \begin{figure*}[h]
     \centering
@@ -254,6 +398,7 @@ Testing
         \centering
         \includegraphics[scale=0.5]{cnnACCSNR}
         \caption{Performance Metric}
+        \label{cnnACCSNR}
     \end{subfigure}%
     ~ 
     \begin{subfigure}[b]{0.5\textwidth}
@@ -262,9 +407,8 @@ Testing
         \caption{Confusion Matrix}
     \end{subfigure}
     \caption{Performance of CNN-AV on Test Data}
+    \label{cnnConfMat}
 \end{figure*}
-
-CONF MATRIX
 
 \begin{figure}[!ht]
    \centering
@@ -272,13 +416,37 @@ CONF MATRIX
    \subfloat[][]{\includegraphics[width=.4\textwidth]{-8}}\\
    \subfloat[][]{\includegraphics[width=.4\textwidth]{0}}\quad
    \subfloat[][]{\includegraphics[width=.4\textwidth]{18}}
-   \caption{CNN-AV Confusion Matrix at Different SNRs}
-   \label{fig:sub1}
+   \caption{CNN-AV Confusion Matrices at Different SNRs}
+   \label{fig:cnnConfSep}
 \end{figure}
 
-\subsection{Results}
+\section{Discussion}
+
+The average prediction accuracy across modulation classes has been the performance metric used in this project. The performance metric across the training, testing and validation sets have been reported in the TABLE \ref{tab:discuss}. Both networks perform nearly identically when the input signal has a high SNR. For inputs signals at lower SNR levels, the CNN based architecture performs relatively better as it is able to reasonably distinguish between modulation classes at SNR values as low as -4 dB (~60\% accuracy). The difference in performance at low SNRs is most likely due to the nature of how each architecture fundamentally functions.
+
+\begin{table}[h]
+\centering
+\caption{Average Prediction Accuracy Across All Modulation Classes (Performance Metric)}
+\label{tab:discuss}
+\begin{tabular}{ccc}
+\hline
+\multirow{2}{*}{} & \multicolumn{2}{c}{Network} \\
+                  & DNN-AV       & CNN-AV      \\ \hline
+Training Set      & 42.23\%      & 53.07\%     \\
+Validation Set    & 43.02\%      & 54.07\%     \\
+Test Set          & 42.64\%      & 53.04\%     \\ \hline
+\end{tabular}
+\end{table}
+
+The CNN processes the input signal by looking at signal amplitudes. This is more or less equivalent to observing the signal waveform. Convolutional layers are then trained such that they activate when specific features are identified. It does seem then that even at lower SNRs the CNN is still able to discern some of these features unique to different modulation classes.
+
+In case of the DNN, feature extraction is a separate process and the network sees only what it is fed as input. Unfortunately, the onus is on the designer to ensure that the right features are passed to the network. Without a sufficient understanding of the problem, incorrect features fed into the network will not allow the network to learn. It does seem then that the features I chose as input to DNN-AV were easily affected by noise. Perhaps identifying and extracting other features which are more resilient to noise can help improve the performance.
+
+Another point of note relates to the ambiguity between QAM-16 and QAM-64. While CNN-AV could not make the distinction even at the highest SNR levels, DNN-AV performed somewhat better at 18 dB (refer to Figure \ref{fig:dnnConfSep} (d)).
 
 \section{Conclusion}
+
+In conclusion, both DNNs and CNNs are viable approaches when attempting to tackle the task of Automatic Modulation Classification. While CNNs are great at extracting features from input, they come at a cost of increased computation. DNNs on the other hand are much simpler but are only efficient if they're given the right kind of inputs.
 
 % use section* for acknowledgment
 %\section*{Acknowledgment}
