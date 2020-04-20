@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7300 64-bit) (preloaded format=pdflatex 2020.2.5)  8 APR 2020 18:02
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7300 64-bit) (preloaded format=pdflatex 2020.2.5)  9 APR 2020 19:04
 entering extended mode
 **./finalReport.tex
 (finalReport.tex
@@ -264,44 +264,44 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 <Images/stratSampleModTech.png, id=11, 626.34pt x 266.9975pt>
 File: Images/stratSampleModTech.png Graphic file (type png)
 <use Images/stratSampleModTech.png>
-Package pdftex.def Info: Images/stratSampleModTech.png  used on input line 166.
+Package pdftex.def Info: Images/stratSampleModTech.png  used on input line 164.
 
 (pdftex.def)             Requested size: 375.80688pt x 160.19972pt.
  [2 <./Images/stratSampleModTech.png>] [3]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 221.
+               Default added (so using `tbp') on input line 219.
 
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 225.
+(Font)              <8> on input line 223.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 225.
+(Font)              <6> on input line 223.
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 238.
+               Default added (so using `tbp') on input line 236.
 
 <Images/dnnavPerf.png, id=26, 393.47pt x 279.0425pt>
 File: Images/dnnavPerf.png Graphic file (type png)
 <use Images/dnnavPerf.png>
-Package pdftex.def Info: Images/dnnavPerf.png  used on input line 259.
+Package pdftex.def Info: Images/dnnavPerf.png  used on input line 257.
 (pdftex.def)             Requested size: 196.73451pt x 139.5209pt.
 <Images/dnnavPerfMet.png, id=27, 393.47pt x 279.0425pt>
 File: Images/dnnavPerfMet.png Graphic file (type png)
 <use Images/dnnavPerfMet.png>
-Package pdftex.def Info: Images/dnnavPerfMet.png  used on input line 265.
+Package pdftex.def Info: Images/dnnavPerfMet.png  used on input line 263.
 (pdftex.def)             Requested size: 196.73451pt x 139.5209pt.
 <Images/dnnACCSNR.png, id=28, 498.86375pt x 388.45125pt>
 File: Images/dnnACCSNR.png Graphic file (type png)
 <use Images/dnnACCSNR.png>
-Package pdftex.def Info: Images/dnnACCSNR.png  used on input line 279.
+Package pdftex.def Info: Images/dnnACCSNR.png  used on input line 277.
 (pdftex.def)             Requested size: 249.43126pt x 194.22514pt.
 <Images/dnnoverallConfMat.png, id=29, 338.26375pt x 295.1025pt>
 File: Images/dnnoverallConfMat.png Graphic file (type png)
 <use Images/dnnoverallConfMat.png>
-Package pdftex.def Info: Images/dnnoverallConfMat.png  used on input line 286.
+Package pdftex.def Info: Images/dnnoverallConfMat.png  used on input line 284.
 (pdftex.def)             Requested size: 236.78299pt x 206.57033pt.
 
-Overfull \hbox (4.59991pt too wide) in paragraph at lines 277--290
+Overfull \hbox (4.59991pt too wide) in paragraph at lines 275--288
  [][]  [] 
  []
 
@@ -311,22 +311,22 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 <Images/-20dnn.png, id=30, 338.26375pt x 295.1025pt>
 File: Images/-20dnn.png Graphic file (type png)
 <use Images/-20dnn.png>
-Package pdftex.def Info: Images/-20dnn.png  used on input line 295.
+Package pdftex.def Info: Images/-20dnn.png  used on input line 293.
 (pdftex.def)             Requested size: 206.39685pt x 180.06628pt.
 <Images/-8dnn.png, id=31, 338.26375pt x 295.1025pt>
 File: Images/-8dnn.png Graphic file (type png)
 <use Images/-8dnn.png>
-Package pdftex.def Info: Images/-8dnn.png  used on input line 296.
+Package pdftex.def Info: Images/-8dnn.png  used on input line 294.
 (pdftex.def)             Requested size: 206.39685pt x 180.06628pt.
 <Images/0dnn.png, id=32, 338.26375pt x 295.1025pt>
 File: Images/0dnn.png Graphic file (type png)
 <use Images/0dnn.png>
-Package pdftex.def Info: Images/0dnn.png  used on input line 297.
+Package pdftex.def Info: Images/0dnn.png  used on input line 295.
 (pdftex.def)             Requested size: 206.39685pt x 180.06628pt.
 <Images/18dnn.png, id=33, 338.26375pt x 295.1025pt>
 File: Images/18dnn.png Graphic file (type png)
 <use Images/18dnn.png>
-Package pdftex.def Info: Images/18dnn.png  used on input line 298.
+Package pdftex.def Info: Images/18dnn.png  used on input line 296.
 (pdftex.def)             Requested size: 206.39685pt x 180.06628pt.
 [4 <./Images/dnnavPerf.png> <./Images/dnnavPerfMet.png>]
 
@@ -336,30 +336,30 @@ LaTeX Warning: Text page 5 contains only floats.
 ng> <./Images/-8dnn.png> <./Images/0dnn.png> <./Images/18dnn.png>] [6]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 357.
+               Default added (so using `tbp') on input line 355.
 
 <Images/cnnavPerf.png, id=51, 387.4475pt x 279.0425pt>
 File: Images/cnnavPerf.png Graphic file (type png)
 <use Images/cnnavPerf.png>
-Package pdftex.def Info: Images/cnnavPerf.png  used on input line 378.
+Package pdftex.def Info: Images/cnnavPerf.png  used on input line 376.
 (pdftex.def)             Requested size: 193.72327pt x 139.5209pt.
 <Images/cnnavPerfMet.png, id=52, 387.4475pt x 279.0425pt>
 File: Images/cnnavPerfMet.png Graphic file (type png)
 <use Images/cnnavPerfMet.png>
-Package pdftex.def Info: Images/cnnavPerfMet.png  used on input line 384.
+Package pdftex.def Info: Images/cnnavPerfMet.png  used on input line 382.
 (pdftex.def)             Requested size: 193.72327pt x 139.5209pt.
 <Images/cnnACCSNR.png, id=53, 498.86375pt x 388.45125pt>
 File: Images/cnnACCSNR.png Graphic file (type png)
 <use Images/cnnACCSNR.png>
-Package pdftex.def Info: Images/cnnACCSNR.png  used on input line 399.
+Package pdftex.def Info: Images/cnnACCSNR.png  used on input line 397.
 (pdftex.def)             Requested size: 249.43126pt x 194.22514pt.
 <Images/cnnoverallConfMat.png, id=54, 338.26375pt x 295.1025pt>
 File: Images/cnnoverallConfMat.png Graphic file (type png)
 <use Images/cnnoverallConfMat.png>
-Package pdftex.def Info: Images/cnnoverallConfMat.png  used on input line 406.
+Package pdftex.def Info: Images/cnnoverallConfMat.png  used on input line 404.
 (pdftex.def)             Requested size: 236.78299pt x 206.57033pt.
 
-Overfull \hbox (4.59991pt too wide) in paragraph at lines 397--409
+Overfull \hbox (4.59991pt too wide) in paragraph at lines 395--407
  [][]  [] 
  []
 
@@ -369,22 +369,22 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 <Images/-20.png, id=55, 338.26375pt x 295.1025pt>
 File: Images/-20.png Graphic file (type png)
 <use Images/-20.png>
-Package pdftex.def Info: Images/-20.png  used on input line 415.
+Package pdftex.def Info: Images/-20.png  used on input line 413.
 (pdftex.def)             Requested size: 206.39685pt x 180.06628pt.
 <Images/-8.png, id=56, 338.26375pt x 295.1025pt>
 File: Images/-8.png Graphic file (type png)
 <use Images/-8.png>
-Package pdftex.def Info: Images/-8.png  used on input line 416.
+Package pdftex.def Info: Images/-8.png  used on input line 414.
 (pdftex.def)             Requested size: 206.39685pt x 180.06628pt.
 <Images/0.png, id=57, 338.26375pt x 295.1025pt>
 File: Images/0.png Graphic file (type png)
 <use Images/0.png>
-Package pdftex.def Info: Images/0.png  used on input line 417.
+Package pdftex.def Info: Images/0.png  used on input line 415.
 (pdftex.def)             Requested size: 206.39685pt x 180.06628pt.
 <Images/18.png, id=58, 338.26375pt x 295.1025pt>
 File: Images/18.png Graphic file (type png)
 <use Images/18.png>
-Package pdftex.def Info: Images/18.png  used on input line 418.
+Package pdftex.def Info: Images/18.png  used on input line 416.
 (pdftex.def)             Requested size: 206.39685pt x 180.06628pt.
 [7 <./Images/cnnavPerf.png> <./Images/cnnavPerfMet.png>]
 
@@ -400,7 +400,7 @@ Here is how much of TeX's memory you used:
  18705 multiletter control sequences out of 15000+200000
  567869 words of font info for 83 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,9n,49p,1044b,427s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 41i,9n,49p,1094b,427s stack positions out of 5000i,500n,10000p,200000b,50000s
 {D:/Work Software Core/Miktex/fonts/enc/dvips/base/8r.en
 c}<D:/Work Software Core/Miktex/fonts/type1/public/amsfonts/cm/cmex10.pfb><D:/W
 ork Software Core/Miktex/fonts/type1/public/amsfonts/cm/cmmi10.pfb><D:/Work Sof
@@ -413,7 +413,7 @@ nts/cm/cmsy10.pfb><D:/Work Software Core/Miktex/fonts/type1/public/amsfonts/cm/
 cmsy7.pfb><D:/Work Software Core/Miktex/fonts/type1/urw/times/utmb8a.pfb><D:/Wo
 rk Software Core/Miktex/fonts/type1/urw/times/utmr8a.pfb><D:/Work Software Core
 /Miktex/fonts/type1/urw/times/utmri8a.pfb>
-Output written on finalReport.pdf (9 pages, 402976 bytes).
+Output written on finalReport.pdf (9 pages, 403165 bytes).
 PDF statistics:
  116 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
